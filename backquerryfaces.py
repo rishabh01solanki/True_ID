@@ -120,11 +120,11 @@ class neuralNetwork:
 
     # number of input, hidden and output nodes
 input_nodes = 2500
-hidden_nodes = 500
+hidden_nodes = 300
 output_nodes = 2
 
 # learning rate
-learning_rate = 0.01
+learning_rate = 0.1
 
 # create instance of neural network
 n = neuralNetwork(input_nodes,hidden_nodes,output_nodes, learning_rate)
@@ -132,7 +132,7 @@ n = neuralNetwork(input_nodes,hidden_nodes,output_nodes, learning_rate)
 size = 50,50
 training_data_list =[]
 
-for file in glob.glob("/Users/rishabhsolanki/Desktop/Github/ML/ML_numbers/Rishu/*"):
+for file in glob.glob("/Users/rishabhsolanki/Desktop/Github/Machine learning/True_ID/Target/*"):
     img = Image.open(file)
     img1= img.resize(size,1)
     gray_img = ImageOps.grayscale(img1)
@@ -140,7 +140,7 @@ for file in glob.glob("/Users/rishabhsolanki/Desktop/Github/ML/ML_numbers/Rishu/
     pixels.insert(0,1)
     training_data_list.append(pixels)
 
-for file in glob.glob("/Users/rishabhsolanki/Desktop/Github/ML/ML_numbers/Not_Rishu/*"):
+for file in glob.glob("/Users/rishabhsolanki/Desktop/Github/Machine learning/True_ID/Training_set/*"):
     img = Image.open(file)
     img1= img.resize(size,1)
     gray_img = ImageOps.grayscale(img1)
@@ -172,7 +172,7 @@ for e in range(epochs):
 # run the network backwards, given a label, see what image it produces
 
 # label to test
-label = 0  # put your testing number here
+label = 1  # put your testing number here
 # create the output signals for this label
 targets = numpy.zeros(output_nodes) + 0.01
 # all_values[0] is the target label for this record
@@ -184,5 +184,5 @@ image_data = n.backquery(targets)
 
 # plot image data
 matplotlib.pyplot.imshow(image_data.reshape(50,50), cmap='Greys', interpolation='None')
-matplotlib.pyplot.savefig("seven1.png")
+matplotlib.pyplot.savefig("result1.png")
 
